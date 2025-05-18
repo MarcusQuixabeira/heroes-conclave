@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Heroes Conclave
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -24,6 +24,20 @@
       show-if-above
       bordered
     >
+      <q-list>
+        <q-item-label
+          header
+        >
+          App Links
+        </q-item-label>
+
+        <EssentialLink
+          v-for="link in appLinksList"
+          :key="link.title"
+          v-bind="link"
+        />
+      </q-list>
+
       <q-list>
         <q-item-label
           header
@@ -49,48 +63,41 @@
 import { ref } from 'vue';
 import EssentialLink, { type EssentialLinkProps } from 'components/EssentialLink.vue';
 
+const appLinksList : EssentialLinkProps[] = [
+    {
+      title: 'Home',
+      caption: 'Initial page',
+      icon: 'home',
+      link: '/',
+      names: ['Home'],
+      internal: true
+    },
+    {
+      title: 'Heroes',
+      caption: 'listing',
+      icon: 'stars',
+      link: '/heroes',
+      names: ['HeroesList', 'HeroDetail'],
+      internal: true
+    },
+]
+
 const linksList: EssentialLinkProps[] = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'Git Repo',
+    caption: 'Git repository of this app',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: 'https://github.com',
+    names: [],
+    internal: false
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
+    title: 'Heroes Fan Page',
+    caption: 'Personal page',
     icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    link: 'https://mquixaba.com',
+    names: [],
+    internal: false
   }
 ];
 

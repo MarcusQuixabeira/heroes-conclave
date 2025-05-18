@@ -1,9 +1,8 @@
 <template>
   <q-item
     clickable
-    tag="a"
-    target="_blank"
-    :href="link"
+    @click="navigateTo(link, internal)"
+    :active="active"
   >
     <q-item-section
       v-if="icon"
@@ -20,16 +19,29 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
+
 export interface EssentialLinkProps {
   title: string;
   caption?: string;
-  link?: string;
+  link: string;
   icon?: string;
+  internal: boolean;
+  names: string[];
 };
 
-withDefaults(defineProps<EssentialLinkProps>(), {
-  caption: '',
-  link: '#',
-  icon: '',
-});
+const props = defineProps<EssentialLinkProps>()
+
+async function navigateTo(link: string, internal: boolean) {
+  return internal ? await router.push({ path: link }) : window.open(link, '_blank')
+}
+
+const active = computed(() => {
+  // This is necessary because the route name can not be directly typed as a string
+  const currentRouteName: string = (router.currentRoute.value.name as string) ?? ''
+  return props.names.includes(currentRouteName || '')
+})
 </script>
