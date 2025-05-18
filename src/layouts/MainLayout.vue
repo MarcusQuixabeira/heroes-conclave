@@ -87,7 +87,7 @@ const linksList: EssentialLinkProps[] = [
     title: 'Git Repo',
     caption: 'Git repository of this app',
     icon: 'code',
-    link: 'https://github.com',
+    link: 'https://github.com/MarcusQuixabeira/heroes-conclave',
     names: [],
     internal: false
   },

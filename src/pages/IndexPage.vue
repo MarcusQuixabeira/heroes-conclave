@@ -23,6 +23,10 @@
             Please, before any contact attempt, check the status of the hero or you can find yourself
             in a miserable situation.
           </p>
+          <p>
+            Check the Git Repo link in the sidebar menu to check how I managed to convince robots to run
+            this application.
+          </p>
           <p class="text-caption">
             If you find any misbehavior on this cool application, please contact me using the Hero Fan Page
             link in the sidebar menu.
